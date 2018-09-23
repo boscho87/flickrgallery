@@ -36,14 +36,14 @@ class AlbumParserTest extends BaseTestCase
 
     /**
      * @group unit
+     * @throws \Exception
      */
     public function testIfRawResponseToEntityReturnsAlbums()
     {
         $rawResponse = $this->jsonFromFile('photoset.json');
-        $albums = $this->parser->rawResponseToEntity($rawResponse);
-        foreach ($albums as $album) {
-            $this->assertInstanceOf(FlickrAlbum::class, $album);
-        }
+        $album = $this->parser->rawResponseToEntity($rawResponse);
+        $this->assertInstanceOf(FlickrAlbum::class, $album);
+
     }
 
 
