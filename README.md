@@ -69,6 +69,7 @@ In Production mode its recommended to set this to true, so the page will even lo
 ## FlickrGallery Roadmap
 
 - Write more tests
+- Add Travis CI and Codacy Stuff (Coverage etc.)
 - Implement a Cronjob/Task for Cache warming the Flickr stuff
 - Do a request for every single image to check the available sizes etc. (This can not be done "on request" and needs a Cronjob)
 - Implement a proper error handling when the Flickr Api is offline
