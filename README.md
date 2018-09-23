@@ -34,13 +34,13 @@ Get a Flickr [Api Key](https://www.flickr.com/services/api/misc.api_keys.html) a
 
 The Plugins adds a method calles flickrAlbum() to Craft's twig environment
 
-##### Prameters:
+### Prameters:
 
-### id [int] - required
+#### id [int] - required
 The id of the Flickr Gallery you want to request
 
 
-### exception [bool] - optional
+#### exception [bool] - optional
 *default*: `true`  
 If this is set to false, the plugin returns an empty array on any error, so if your apikey,secret is not correct, or your id just is invalid, there will be an empty album object, with the error message in the title.  
 In Production mode its recommended to set this to true, so the page will even load if the flickr api has any problems
@@ -66,7 +66,7 @@ In Production mode its recommended to set this to true, so the page will even lo
    - bigUrl
    - originalUrl
   
-## FlickrGallery Roadmap
+## Roadmap
 
 - Write more tests
 - Add Travis CI and Codacy Stuff (Coverage etc.)
@@ -77,6 +77,7 @@ In Production mode its recommended to set this to true, so the page will even lo
 
 ## Contributions / Issues
 If you have feature Request or you want something done of the Roadmap, create an Issue. OR YOU FOUND A BUG IN BY CODE (even that could happen)
+
 
 Brought to you by [Simon Müller](https://blog.itscoding.ch)
 
