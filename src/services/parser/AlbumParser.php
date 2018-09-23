@@ -6,16 +6,16 @@
  * Time: 11:45
  */
 
-namespace boscho87\flickrgallery\services\parser;
+namespace itscoding\flickrgallery\services\parser;
 
 
-use boscho87\flickrgallery\entities\FlickrAlbum;
-use boscho87\flickrgallery\hydrators\AlbumHydrator;
-use boscho87\flickrgallery\services\FlickrClient;
+use itscoding\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\hydrators\AlbumHydrator;
+use itscoding\flickrgallery\services\FlickrClient;
 
 /**
  * Class AlbumParser
- * @package boscho87\flickrgallery\services\parser
+ * @package itscoding\flickrgallery\services\parser
  */
 class AlbumParser
 {
