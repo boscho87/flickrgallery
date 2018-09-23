@@ -5,7 +5,7 @@ Hey dude! Help me out for a couple of :beers:!
 
 [![Beerpay](https://beerpay.io/boscho87/flickrgallery/badge.svg?style=beer-square)](https://beerpay.io/boscho87/flickrgallery)  [![Beerpay](https://beerpay.io/boscho87/flickrgallery/make-wish.svg?style=flat-square)](https://beerpay.io/boscho87/flickrgallery?focus=wish)
 
-![Screenshot](https://github.com/boscho87/flickrgallery/blob/master/src/icon.svg)
+<img src="https://github.com/boscho87/flickrgallery/raw/master/src/icon.svg?sanitize=true" alt="Screenshot" width="80px" height=80px>
 
 ## Requirements
 
