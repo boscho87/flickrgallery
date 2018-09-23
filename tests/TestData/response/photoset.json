@@ -1,0 +1,101 @@
+{
+  "photoset": {
+    "id": "1234",
+    "primary": "20818",
+    "owner": "37996600159@N01",
+    "ownername": "esr2",
+    "photo": [
+      {
+        "id": "20818",
+        "secret": "042da81c5f",
+        "server": "1",
+        "farm": 1,
+        "title": "01010420113_jpg",
+        "isprimary": "1",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      },
+      {
+        "id": "20819",
+        "secret": "3d336487c3",
+        "server": "1",
+        "farm": 1,
+        "title": "020704-108",
+        "isprimary": "0",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      },
+      {
+        "id": "20820",
+        "secret": "c802fdc410",
+        "server": "1",
+        "farm": 1,
+        "title": "12170320068_jpg",
+        "isprimary": "0",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      },
+      {
+        "id": "20821",
+        "secret": "5ad3987848",
+        "server": "1",
+        "farm": 1,
+        "title": "12170320130_jpg",
+        "isprimary": "0",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      },
+      {
+        "id": "20822",
+        "secret": "f126183a0e",
+        "server": "1",
+        "farm": 1,
+        "title": "12170320133_jpg",
+        "isprimary": "0",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      },
+      {
+        "id": "20823",
+        "secret": "cd29283d88",
+        "server": "1",
+        "farm": 1,
+        "title": "Lambo-002_jpg",
+        "isprimary": "0",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0,
+        "description": {
+          "_content": ""
+        }
+      }
+    ],
+    "page": 1,
+    "per_page": 500,
+    "perpage": 500,
+    "pages": 1,
+    "title": "esr2's Gallery",
+    "total": 6
+  },
+  "stat": "ok"
+}

@@ -1,0 +1,35 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * FlickrGallery plugin for Craft CMS 3.x
+ *
+ * FlickrGallery Settings.twig
+ *
+ * @author    Simon Müller
+ * @copyright Copyright (c) 2018 Simon Müller
+ * @link      https://blog.itscoding.ch
+ * @package   FlickrGallery
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("boscho87\\flickrgallery\\assetbundles\\flickrgallery\\FlickrGalleryAsset") %}
+
+{{ forms.textField({
+    label: 'api.key'|t('flickr-gallery'),
+    instructions: 'api.key.instructions'|t('flickr-gallery'),
+    id: 'apiKey',
+    name: 'apiKey',
+    value: settings['apiKey']})
+}}
+
+{{ forms.textField({
+    label: 'app.secret'|t('flickr-gallery'),
+    instructions: 'app.secret.instructions'|t('flickr-gallery'),
+    id: 'appSecret',
+    name: 'appSecret',
+    value: settings['appSecret']})
+}}
+
