@@ -6,13 +6,13 @@
  * Time: 10:51
  */
 
-namespace boscho87\flickrgallery\services;
+namespace itscoding\flickrgallery\services;
 
-use boscho87\flickrgallery\FlickrGallery;
+use itscoding\flickrgallery\FlickrGallery;
 
 /**
  * Class FlickrClient
- * @package boscho87\flickrgallery\services
+ * @package itscoding\flickrgallery\services
  */
 class FlickrClient
 {
@@ -36,6 +36,7 @@ class FlickrClient
     const NO_JSON_CALLBACK = '1';
     const FORMAT = 'json';
     const EXTRAS = 'description';
+    const MEDIA = 'photos';
 
     /**
      * Methods
@@ -56,10 +57,10 @@ class FlickrClient
         $this->secret = $secret;
 
         if (!$this->apiKey) {
-            $this->apiKey = FlickrGallery::$plugin->getSettings()->api_key;
+            $this->apiKey = FlickrGallery::$plugin->getSettings()->apiKey;
         }
         if (!$this->secret) {
-            $this->secret = FlickrGallery::$plugin->getSettings()->secret;
+            $this->secret = FlickrGallery::$plugin->getSettings()->appSecret;
         }
     }
 
@@ -90,6 +91,7 @@ class FlickrClient
         $queryParameters['format'] = self::FORMAT;
         $queryParameters['extras'] = self::EXTRAS;
         $queryParameters['api_key'] = $this->apiKey;
+        $queryParameters['meida'] = self::MEDIA;
         $queryParameters['secret'] = $this->secret;
         foreach ($queryParameters as $parameter => $value) {
             $encodedParams[] = sprintf('%s=%s', urlencode($parameter), urlencode($value));

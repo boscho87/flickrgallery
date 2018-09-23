@@ -9,7 +9,7 @@
 namespace FlickrGalleryTest\services;
 
 
-use boscho87\flickrgallery\services\FlickrClient;
+use itscoding\flickrgallery\services\FlickrClient;
 use FlickrGalleryTest\BaseTestCase;
 
 /**

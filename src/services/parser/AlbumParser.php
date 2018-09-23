@@ -20,7 +20,7 @@ use boscho87\flickrgallery\services\FlickrClient;
 class AlbumParser
 {
 
-
+    const ERROR_CODE = 1;
     const PHOTO_SET = 'photoset';
     /**
      * @var AlbumHydrator
@@ -40,12 +40,20 @@ class AlbumParser
     /**
      * @param string $jsonResponse
      * @return FlickrAlbum
+     * @throws \Exception
      */
     public function rawResponseToEntity(string $jsonResponse): FlickrAlbum
     {
         $parsedData = json_decode($jsonResponse, true);
+
+        if (isset($parsedData['code']) && $parsedData['code'] === self::ERROR_CODE) {
+            //Todo log and throw the right exception type here
+            throw  new \Exception(sprintf('The Flickr Api Responsed with an Error: %s', $parsedData['message']));
+        }
+
+
         if (!array_key_exists(self::PHOTO_SET, $parsedData)) {
-            //Todo throw the right exception type here
+            //Todo log and throw the right exception type here
             throw new \Exception(sprintf('The response does not contain %s', FlickrClient::PHOTO_SET));
         }
         return $this->hydrator->hydrate($parsedData[self::PHOTO_SET], new FlickrAlbum());

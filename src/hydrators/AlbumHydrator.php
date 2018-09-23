@@ -1,9 +1,9 @@
 <?php
 
-namespace boscho87\flickrgallery\hydrators;
+namespace itscoding\flickrgallery\hydrators;
 
 
-use boscho87\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\entities\FlickrAlbum;
 use Zend\Hydrator\ClassMethods;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 

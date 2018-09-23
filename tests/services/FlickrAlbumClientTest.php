@@ -10,18 +10,18 @@ namespace FlickrGalleryTest\services;
 
 
 use boscho87\flickrgallery\services\FlickrClient;
-use boscho87\flickrgallery\services\FlickrGalleryService;
+use boscho87\flickrgallery\services\FlickrAlbumClient;
 use FlickrGalleryTest\BaseTestCase;
 
 /**
  * Class FlickrGallerServiceTest
  * @package FlickrGalleryTest\services
  */
-class FlickrGallerServiceTest extends BaseTestCase
+class FlickrAlbumClientTest extends BaseTestCase
 {
 
     /**
-     * @var FlickrGalleryService
+     * @var FlickrAlbumClient
      */
     private $galleryService;
 
@@ -33,7 +33,7 @@ class FlickrGallerServiceTest extends BaseTestCase
         parent::setUp();
         $flickrClient = $this->createMock(FlickrClient::class);
         $flickrClient->method('get')->willReturn($this->jsonFromFile('photoset.json'));
-        $this->galleryService = new FlickrGalleryService($flickrClient);
+        $this->galleryService = new FlickrAlbumClient($flickrClient);
     }
 
 

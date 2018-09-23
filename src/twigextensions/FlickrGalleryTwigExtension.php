@@ -8,15 +8,19 @@
  * @copyright Copyright (c) 2018 Simon Müller
  */
 
-namespace boscho87\flickrgallery\twigextensions;
+namespace itscoding\flickrgallery\twigextensions;
 
-use boscho87\flickrgallery\FlickrGallery;
+use itscoding\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\FlickrGallery;
 
+use itscoding\flickrgallery\services\FlickrAlbumClient;
+use itscoding\flickrgallery\services\FlickrClient;
+use itscoding\flickrgallery\services\parser\AlbumParser;
 use Craft;
 
 /**
  * Class FlickrGalleryTwigExtension
- * @package boscho87\flickrgallery\twigextensions
+ * @package itscoding\flickrgallery\twigextensions
  */
 class FlickrGalleryTwigExtension extends \Twig_Extension
 {
@@ -36,7 +40,7 @@ class FlickrGalleryTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
+            //  new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
         ];
     }
 
@@ -46,7 +50,7 @@ class FlickrGalleryTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('someFunction', [$this, 'someInternalFunction']),
+            new \Twig_SimpleFunction('flickrAlbum', [$this, 'flickrAlbum']),
         ];
     }
 
@@ -54,11 +58,26 @@ class FlickrGalleryTwigExtension extends \Twig_Extension
      * @param null $text
      *
      * @return string
+     * @throws \Exception
      */
-    public function someInternalFunction($text = null)
+    public function flickrAlbum(array $options): ?FlickrAlbum
     {
-        $result = $text . " in the way";
-
-        return $result;
+        $flickrAlbumClient = new FlickrAlbumClient(
+            new FlickrClient(),
+            new AlbumParser()
+        );
+        $id = $options['id'] ?: '-1';
+        if (Craft::$app->cache->exists($id && false)) {
+            return Craft::$app->cache->get($id);
+        }
+        if (array_key_exists('exception', $options) && $options['exception']) {
+            $album = $flickrAlbumClient->getAlbumById($id);
+        } else {
+            $album = $flickrAlbumClient->getAlbumByIdOrEmpty($id);
+        }
+        if ($album->getImages()) {
+            Craft::$app->cache->set($id, $album);
+        }
+        return $album;
     }
 }

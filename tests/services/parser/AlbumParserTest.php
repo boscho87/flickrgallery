@@ -9,8 +9,8 @@
 namespace FlickrGalleryTest\services\parser;
 
 
-use boscho87\flickrgallery\entities\FlickrAlbum;
-use boscho87\flickrgallery\services\parser\AlbumParser;
+use itscoding\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\services\parser\AlbumParser;
 use FlickrGalleryTest\BaseTestCase;
 
 /**

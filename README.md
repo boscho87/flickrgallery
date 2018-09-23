@@ -18,13 +18,20 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require boscho87/flickr-gallery
+        composer require itscoding/flickr-gallery
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for FlickrGallery.
 
 ## FlickrGallery Overview
 
--Insert text here-
+```twig
+     {% set album = flickrAlbum({id:'72157667785439498',exception:true}) %}
+     <h2>{{ album.title }}</h2>
+     {% for image in album.images %}
+         {{ image.url() }}
+     {% endfor %}
+
+```
 
 ## Configuring FlickrGallery
 

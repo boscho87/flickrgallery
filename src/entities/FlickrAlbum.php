@@ -6,11 +6,11 @@
  * Time: 11:24
  */
 
-namespace boscho87\flickrgallery\entities;
+namespace itscoding\flickrgallery\entities;
 
 /**
  * Class FlickrAlbum
- * @package boscho87\flickrgallery\entities
+ * @package itscoding\flickrgallery\entities
  */
 class FlickrAlbum
 {
@@ -22,6 +22,10 @@ class FlickrAlbum
      * @var FlickrImage[]|array
      */
     private $images;
+    /**
+     * @var string
+     */
+    private $title;
     /**
      * @var string
      */
@@ -62,6 +66,23 @@ class FlickrAlbum
     {
         $this->images = $images;
     }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title ?: '';
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
 
     /**
      * @return string

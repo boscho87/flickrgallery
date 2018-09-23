@@ -1,5 +1,5 @@
 {
-    "name": "boscho87/flickr-gallery",
+    "name": "itscoding/flickr-gallery",
     "description": "Use FlickrImages",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-          "boscho87\\flickrgallery\\": "src/"
+          "itscoding\\flickrgallery\\": "src/"
         }
     },
     "autoload-dev": {
@@ -44,9 +44,9 @@
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/boscho87/flickr-gallery/master/CHANGELOG.md",
         "components": {
-            "flickrGalleryService": "boscho87\\flickrgallery\\services\\FlickrGalleryService"
+            "flickrGalleryService": "itscoding\\flickrgallery\\services\\FlickrGalleryService"
         },
-        "class": "boscho87\\flickrgallery\\FlickrGallery"
+        "class": "itscoding\\flickrgallery\\FlickrGallery"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.3"

@@ -8,9 +8,9 @@
  * @copyright Copyright (c) 2018 Simon Müller
  */
 
-namespace boscho87\flickrgallery\models;
+namespace itscoding\flickrgallery\models;
 
-use boscho87\flickrgallery\FlickrGallery;
+use itscoding\flickrgallery\FlickrGallery;
 
 use Craft;
 use craft\base\Model;

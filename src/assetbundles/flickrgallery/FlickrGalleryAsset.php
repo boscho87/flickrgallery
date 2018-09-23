@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Simon Müller
  */
 
-namespace boscho87\flickrgallery\assetbundles\FlickrGallery;
+namespace itscoding\flickrgallery\assetbundles\FlickrGallery;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -29,7 +29,7 @@ class FlickrGalleryAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@boscho87/flickrgallery/assetbundles/flickrgallery/dist";
+        $this->sourcePath = "@itscoding/flickrgallery/assetbundles/flickrgallery/dist";
 
         $this->depends = [
             CpAsset::class,

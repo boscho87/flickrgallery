@@ -8,12 +8,12 @@
  * @copyright Copyright (c) 2018 Simon Müller
  */
 
-namespace boscho87\flickrgallery;
+namespace itscoding\flickrgallery;
 
-use boscho87\flickrgallery\services\FlickrGalleryService as FlickrGalleryServiceService;
-use boscho87\flickrgallery\services\FlickrGalleryService;
-use boscho87\flickrgallery\twigextensions\FlickrGalleryTwigExtension;
-use boscho87\flickrgallery\models\Settings;
+use itscoding\flickrgallery\services\FlickrAlbumClient as FlickrGalleryServiceService;
+use itscoding\flickrgallery\services\FlickrAlbumClient;
+use itscoding\flickrgallery\twigextensions\FlickrGalleryTwigExtension;
+use itscoding\flickrgallery\models\Settings;
 
 use Craft;
 use craft\base\Plugin;
@@ -24,7 +24,7 @@ use yii\base\Event;
 
 /**
  * Class FlickrGallery
- * @package boscho87\flickrgallery
+ * @package itscoding\flickrgallery
  */
 class FlickrGallery extends Plugin
 {
@@ -48,7 +48,7 @@ class FlickrGallery extends Plugin
         Craft::$app->view->registerTwigExtension(new FlickrGalleryTwigExtension());
 
         $this->setComponents([
-            'flickrGalleryService' => FlickrGalleryService::class,
+            'flickrGalleryService' => FlickrAlbumClient::class,
         ]);
 
         Event::on(
