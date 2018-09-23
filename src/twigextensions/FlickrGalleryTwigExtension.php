@@ -37,16 +37,6 @@ class FlickrGalleryTwigExtension extends \Twig_Extension
     /**
      * @inheritdoc
      */
-    public function getFilters()
-    {
-        return [
-            //  new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getFunctions()
     {
         return [

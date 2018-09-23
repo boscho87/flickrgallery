@@ -10,7 +10,6 @@
 
 namespace itscoding\flickrgallery;
 
-use itscoding\flickrgallery\services\FlickrAlbumClient as FlickrGalleryServiceService;
 use itscoding\flickrgallery\services\FlickrAlbumClient;
 use itscoding\flickrgallery\twigextensions\FlickrGalleryTwigExtension;
 use itscoding\flickrgallery\models\Settings;
