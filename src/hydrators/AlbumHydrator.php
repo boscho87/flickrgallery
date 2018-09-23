@@ -24,7 +24,6 @@ class AlbumHydrator extends ClassMethods
      * @var array
      */
     public static $nameMapping = [
-        'id' => 'albumId',
         'owner' => 'ownerId',
         'ownerName' => 'ownerName',
         'photo' => 'images',
@@ -35,9 +34,9 @@ class AlbumHydrator extends ClassMethods
      */
     public function __construct()
     {
+        parent::__construct();
         $this->setNamingStrategy(new MapNamingStrategy(self::$nameMapping));
         $this->addStrategy('images', new PhotoStrategy());
-        parent::__construct();
     }
 
     /**

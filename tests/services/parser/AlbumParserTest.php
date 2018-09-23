@@ -43,7 +43,9 @@ class AlbumParserTest extends BaseTestCase
         $rawResponse = $this->jsonFromFile('photoset.json');
         $album = $this->parser->rawResponseToEntity($rawResponse);
         $this->assertInstanceOf(FlickrAlbum::class, $album);
-
+        $this->assertSame(1234, $album->getId());
+        $this->assertSame('37996600159@N01', $album->getOwnerId());
+        $this->assertSame('esr2', $album->getOwnerName());
     }
 
 
