@@ -1,6 +1,9 @@
 # FlickrGallery plugin for Craft CMS 3.x
 
-Use FlickrImages
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/boscho87/flickrgallery/badge.svg?style=beer-square)](https://beerpay.io/boscho87/flickrgallery)  [![Beerpay](https://beerpay.io/boscho87/flickrgallery/make-wish.svg?style=flat-square)](https://beerpay.io/boscho87/flickrgallery?focus=wish)
 
 ![Screenshot](https://github.com/boscho87/flickrgallery/blob/master/src/icon.png)
 
@@ -76,7 +79,3 @@ If you have feature Request or you want something done of the Roadmap, create an
 
 Brought to you by [Simon Müller](https://blog.itscoding.ch)
 
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/boscho87/flickrgallery/badge.svg?style=beer-square)](https://beerpay.io/boscho87/flickrgallery)  [![Beerpay](https://beerpay.io/boscho87/flickrgallery/make-wish.svg?style=flat-square)](https://beerpay.io/boscho87/flickrgallery?focus=wish)
