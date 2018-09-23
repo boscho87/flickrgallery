@@ -36,11 +36,11 @@ The Plugins adds a method calles flickrAlbum() to Craft's twig environment
 
 ##### Prameters:
 
-###id [int] - required
+### id [int] - required
 The id of the Flickr Gallery you want to request
 
 
-###exception [bool] - optional
+### exception [bool] - optional
 *default*: `true`  
 If this is set to false, the plugin returns an empty array on any error, so if your apikey,secret is not correct, or your id just is invalid, there will be an empty album object, with the error message in the title.  
 In Production mode its recommended to set this to true, so the page will even load if the flickr api has any problems
