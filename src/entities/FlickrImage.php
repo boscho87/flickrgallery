@@ -17,6 +17,10 @@ class FlickrImage
     /**
      * @var string
      */
+    private $id = '';
+    /**
+     * @var string
+     */
     private $url = '';
     /**
      * @var string
@@ -49,7 +53,27 @@ class FlickrImage
     /**
      * @var string
      */
-    private $originalUrl = '';
+    private $xlargeUrl = '';
+    /**
+     * @var string
+     */
+    private $xxlargeUrl = '';
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return string
@@ -183,17 +207,33 @@ class FlickrImage
     /**
      * @return string
      */
-    public function getOriginalUrl(): string
+    public function getXlargeUrl(): string
     {
-        return $this->originalUrl;
+        return $this->xlargeUrl;
     }
 
     /**
-     * @param string $originalUrl
+     * @param string $xlargeUrl
      */
-    public function setOriginalUrl(string $originalUrl): void
+    public function setXlargeUrl(string $xlargeUrl): void
     {
-        $this->originalUrl = $originalUrl;
+        $this->xlargeUrl = $xlargeUrl;
     }
-    
+
+    /**
+     * @return string
+     */
+    public function getXxlargeUrl(): string
+    {
+        return $this->xxlargeUrl;
+    }
+
+    /**
+     * @param string $xxlargeUrl
+     */
+    public function setXxlargeUrl(string $xxlargeUrl): void
+    {
+        $this->xxlargeUrl = $xxlargeUrl;
+    }
+
 }

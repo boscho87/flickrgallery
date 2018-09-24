@@ -63,8 +63,8 @@ In Production mode its recommended to set this to true, so the page will even lo
    - thumbnailUrl
    - mediumUrl
    - largeUrl
-   - bigUrl
-   - originalUrl
+   - xlargeUrl
+   - xxlargeUrl
   
 ## Roadmap
 

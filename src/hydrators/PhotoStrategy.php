@@ -30,8 +30,8 @@ class PhotoStrategy implements StrategyInterface
         't' => 'thumbnail',
         'z' => 'medium',
         'c' => 'large',
-        'b' => 'big',
-        'o' => 'original',
+        'b' => 'xlarge',
+        'h' => 'xxlarge',
     ];
 
     /**
@@ -61,6 +61,7 @@ class PhotoStrategy implements StrategyInterface
             $url = $this->createImageUrl($imageData);
             $image->setUrl($url);
             $image->setTitle($imageData['title']);
+            $image->setId($imageData['id']);
             foreach ($this->sizes as $flickrSize => $sizeName) {
                 $url = $this->createImageUrl($imageData, $flickrSize);
                 $method = 'set' . ucfirst($sizeName) . 'Url';
