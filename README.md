@@ -76,7 +76,9 @@ In Production mode its recommended to set this to true, so the page will even lo
 
 
 ## Contributions / Issues
-If you have feature Request or you want something done of the Roadmap, create an Issue. OR YOU FOUND A BUG IN BY CODE (even that could happen)
+If you have feature Request or you want something done of the Roadmap, create an Issue. OR IF YOU FOUND A BUG IN THE CODE (even that could happen)
+
+
 
 
 Brought to you by [Simon Müller](https://blog.itscoding.ch)
