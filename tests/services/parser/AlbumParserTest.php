@@ -10,6 +10,8 @@ namespace FlickrGalleryTest\services\parser;
 
 
 use itscoding\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\hydrators\AlbumHydrator;
+use itscoding\flickrgallery\hydrators\PhotoStrategy;
 use itscoding\flickrgallery\services\parser\AlbumParser;
 use FlickrGalleryTest\BaseTestCase;
 
@@ -31,7 +33,8 @@ class AlbumParserTest extends BaseTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->parser = new AlbumParser();
+        $albumHydrator = new AlbumHydrator($this->createMock(PhotoStrategy::class));
+        $this->parser = new AlbumParser($albumHydrator);
     }
 
     /**

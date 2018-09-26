@@ -23,6 +23,8 @@ return array_merge(
     $en,
     [
         'api.key.instructions' => 'Flickr Api Key hier eingeben Key <a href="https://www.flickr.com/services/api/misc.api_keys.html">hier</a> anfordern.',
-        'app.secret.instructions' => 'Sicherheitsschlüssel hier eingeben'
+        'app.secret.instructions' => 'Sicherheitsschlüssel hier eingeben',
+        'api.id.instructions' => 'Flcikr Album Id hier eingeben',
+        'api.error.label' => 'Bei Fehler Seite nicht anzeigen',
     ]
 );

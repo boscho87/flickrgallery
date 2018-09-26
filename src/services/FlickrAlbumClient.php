@@ -34,17 +34,18 @@ class FlickrAlbumClient extends Component
     private $parser;
 
     /**
-     * FlickrGalleryService constructor.
-     * @param FlickrClient $client
+     * FlickrAlbumClient constructor.
+     * @param FlickrClient|null $client
+     * @param AlbumParser|null $parser
      */
     public function __construct(
-        FlickrClient $client,
-        AlbumParser $parser
+        FlickrClient $client = null,
+        AlbumParser $parser = null
     )
     {
         parent::__construct();
-        $this->client = $client;
-        $this->parser = $parser;
+        $this->client = $client ?: new FlickrClient();
+        $this->parser = $parser ?: new AlbumParser();
     }
 
     /**
@@ -81,6 +82,7 @@ class FlickrAlbumClient extends Component
         } catch (\Exception $e) {
             $album = new FlickrAlbum();
             $album->setTitle($e->getMessage());
+            $album->setError();
         }
         return $album;
     }

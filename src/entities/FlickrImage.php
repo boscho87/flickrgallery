@@ -58,6 +58,10 @@ class FlickrImage
      * @var string
      */
     private $xxlargeUrl = '';
+    /**
+     * @var bool
+     */
+    private $hasError = false;
 
     /**
      * @return string
@@ -107,7 +111,7 @@ class FlickrImage
     {
         $this->title = $title;
     }
-    
+
     /**
      * @return string
      */
@@ -234,6 +238,52 @@ class FlickrImage
     public function setXxlargeUrl(string $xxlargeUrl): void
     {
         $this->xxlargeUrl = $xxlargeUrl;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasError(): bool
+    {
+        return $this->hasError ?: false;
+    }
+
+    /**
+     * @param bool $error
+     */
+    public function setError(bool $error = true): void
+    {
+        $this->hasError = $error;
+    }
+
+
+    /**
+     * https://www.flickr.com/services/api/flickr.photos.getSizes.html
+     *
+     * @var array
+     */
+    private $sizes = [
+        's' => 'square',
+        'm' => 'small',
+        't' => 'thumbnail',
+        'z' => 'medium',
+        'c' => 'large',
+        'b' => 'xlarge',
+        'h' => 'xxlarge',
+    ];
+
+    /**
+     * @param array $sizes
+     */
+    public function setSizes(array $sizes): void
+    {
+
+        foreach ($sizes as $letter => $size) {
+            if (array_key_exists($letter, $this->sizes)) {
+                $this->{$this->sizes[$letter] . 'Url'} = $size;
+            }
+        }
+        $this->url = end($sizes);
     }
 
 }

@@ -32,26 +32,27 @@ Get a Flickr [Api Key](https://www.flickr.com/services/api/misc.api_keys.html) a
 
 ## Using FlickrGallery
 
-The Plugins adds a method calles flickrAlbum() to Craft's twig environment
+The Plugins adds a Field you can use to craft
 
-### Prameters:
+### Field:
 
-#### id [int] - required
-The id of the Flickr Gallery you want to request
+The Use the Field like every generic Craft Field, add your Flickr Album id, and choose if you want a PageError when the site has any Problem
 
-
-#### exception [bool] - optional
-*default*: `true`  
-If this is set to false, the plugin returns an empty array on any error, so if your apikey,secret is not correct, or your id just is invalid, there will be an empty album object, with the error message in the title.  
-In Production mode its recommended to set this to true, so the page will even load if the flickr api has any problems
+`https://www.flickr.com/photos/boscho87/albums/72157673777849508` => `72157673777849508` 
 
 ```twig
-    {% set album = flickrAlbum({id:'72157667785439498',exception:true}) %}
-           <h2>{{ album.title }}</h2>
+   {% set album = entry.flickr %}
+   {% if not album.hasError %}
+       <h2>{{ album.title }}</h2>
+       <div class="galleries">
            {% for image in album.images %}
-               <img src="{{ image.url }}" alt="{{ image.title }}"/>
+               <a href="{{ image.xxlargeUrl }}">
+                   <img src="{{ image.smallUrl }}" alt="{{ image.title }}"/>
+               </a>
            {% endfor %}
-     {% endfor %}
+       </div>
+   {% endif %}
+  
 ```
 
 ### Edge Cases / Nice to know

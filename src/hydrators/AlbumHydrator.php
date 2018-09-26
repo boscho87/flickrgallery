@@ -32,11 +32,11 @@ class AlbumHydrator extends ClassMethods
     /**
      * AlbumHydrator constructor.
      */
-    public function __construct()
+    public function __construct(PhotoStrategy $photoStrategy = null)
     {
         parent::__construct();
         $this->setNamingStrategy(new MapNamingStrategy(self::$nameMapping));
-        $this->addStrategy('images', new PhotoStrategy());
+        $this->addStrategy('images', $photoStrategy ?: new PhotoStrategy());
     }
 
     /**

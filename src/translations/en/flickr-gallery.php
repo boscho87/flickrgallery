@@ -17,5 +17,7 @@ return [
     'api.key' => 'Api Key',
     'api.key.instructions' => 'Enter your Api Key, get it from <a href="https://www.flickr.com/services/api/misc.api_keys.html">here</a>.',
     'app.secret' => 'App Secret',
-    'app.secret.instructions' => 'Enter your App Secret here'
+    'app.secret.instructions' => 'Enter your App Secret here',
+    'api.id.instructions' => 'Enter the Flcikr Album ID here',
+    'api.error.label' => 'Site error when Failing',
 ];

@@ -43,7 +43,14 @@ class FlickrClient
      */
     const GET_PHOTOS = 'flickr.photosets.getPhotos';
 
+    const GET_SIZES = 'flickr.photos.getSizes';
+
+    /**
+     * Properties
+     */
     const PHOTO_SET = 'photoset_id';
+
+    const PHOTO = 'photo_id';
 
     /**
      * FlickrClient constructor.

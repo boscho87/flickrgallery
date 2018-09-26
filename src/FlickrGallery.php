@@ -10,6 +10,8 @@
 
 namespace itscoding\flickrgallery;
 
+use craft\services\Fields;
+use itscoding\flickrgallery\fields\FlickrField;
 use itscoding\flickrgallery\services\FlickrAlbumClient;
 use itscoding\flickrgallery\twigextensions\FlickrGalleryTwigExtension;
 use itscoding\flickrgallery\models\Settings;
@@ -44,8 +46,6 @@ class FlickrGallery extends Plugin
     {
         parent::init();
         self::$plugin = $this;
-        Craft::$app->view->registerTwigExtension(new FlickrGalleryTwigExtension());
-
         $this->setComponents([
             'flickrGalleryService' => FlickrAlbumClient::class,
         ]);
@@ -56,6 +56,14 @@ class FlickrGallery extends Plugin
             function (PluginEvent $event) {
                 if ($event->plugin === $this) {
                 }
+            }
+        );
+
+        Event::on(
+            Fields::class,
+            Fields::EVENT_REGISTER_FIELD_TYPES,
+            function ($event) {
+                $event->types[] = FlickrField::class;
             }
         );
 

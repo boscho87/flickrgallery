@@ -34,6 +34,10 @@ class FlickrAlbum
      * @var string
      */
     private $ownerName;
+    /**
+     * @var bool
+     */
+    private $hasError;
 
     /**
      * @return int
@@ -116,5 +120,20 @@ class FlickrAlbum
         $this->ownerName = $ownerName;
     }
 
+    /**
+     * @return bool
+     */
+    public function hasError(): bool
+    {
+        return $this->hasError ?: false;
+    }
+
+    /**
+     * @param bool $error
+     */
+    public function setError(bool $error = true): void
+    {
+        $this->hasError = $error;
+    }
 
 }

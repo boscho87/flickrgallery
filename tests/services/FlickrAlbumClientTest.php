@@ -9,9 +9,10 @@
 namespace FlickrGalleryTest\services;
 
 
-use boscho87\flickrgallery\services\FlickrClient;
-use boscho87\flickrgallery\services\FlickrAlbumClient;
 use FlickrGalleryTest\BaseTestCase;
+use itscoding\flickrgallery\services\FlickrAlbumClient;
+use itscoding\flickrgallery\services\FlickrClient;
+use itscoding\flickrgallery\services\parser\AlbumParser;
 
 /**
  * Class FlickrGallerServiceTest
@@ -27,13 +28,15 @@ class FlickrAlbumClientTest extends BaseTestCase
 
     /**
      * Test Setup
+     * @throws \Exception
      */
     public function setUp()
     {
         parent::setUp();
         $flickrClient = $this->createMock(FlickrClient::class);
         $flickrClient->method('get')->willReturn($this->jsonFromFile('photoset.json'));
-        $this->galleryService = new FlickrAlbumClient($flickrClient);
+        $albumParser = $this->createMock(AlbumParser::class);
+        $this->galleryService = new FlickrAlbumClient($flickrClient, $albumParser);
     }
 
 
@@ -45,7 +48,7 @@ class FlickrAlbumClientTest extends BaseTestCase
         $answer = $this->galleryService->getRawAlbumByPhotoSetId(1234);
         $prepared = str_replace([PHP_EOL, ' '], '', $answer);
         $this->assertStringStartsWith('{"photoset":{"id":"1234"', $prepared);
-        $this->assertStringEndsWith('"pages":1,"title":"esr2\'sGallery","total":6},"stat":"ok"}',$prepared);
+        $this->assertStringEndsWith('"pages":1,"title":"esr2\'sGallery","total":6},"stat":"ok"}', $prepared);
 
     }
 

@@ -52,12 +52,12 @@ class FlickrClientTest extends BaseTestCase
             [
                 '',
                 [],
-                'https://api.flickr.com/services/rest/?method=&nojsoncallback=1&format=json&extras=description&api_key=key&secret=secret',
+                'https://api.flickr.com/services/rest/?method=&nojsoncallback=1&format=json&extras=description&api_key=key&meida=photos&secret=secret',
             ],
             [
                 FlickrClient::GET_PHOTOS,
                 ['stuff' => 'stuff'],
-                'https://api.flickr.com/services/rest/?stuff=stuff&method=flickr.photosets.getPhotos&nojsoncallback=1&format=json&extras=description&api_key=key&secret=secret',
+                'https://api.flickr.com/services/rest/?stuff=stuff&method=flickr.photosets.getPhotos&nojsoncallback=1&format=json&extras=description&api_key=key&meida=photos&secret=secret',
             ],
         ];
     }

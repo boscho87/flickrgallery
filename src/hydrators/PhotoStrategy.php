@@ -10,6 +10,7 @@ namespace itscoding\flickrgallery\hydrators;
 
 
 use itscoding\flickrgallery\entities\FlickrImage;
+use itscoding\flickrgallery\services\FlickrImageClient;
 use Zend\Hydrator\Strategy\StrategyInterface;
 
 /**
@@ -20,19 +21,18 @@ class PhotoStrategy implements StrategyInterface
 {
 
     /**
-     * https://www.flickr.com/services/api/flickr.photos.getSizes.html
-     *
-     * @var array
+     * @var FlickrImageClient
      */
-    private $sizes = [
-        's' => 'square',
-        'm' => 'small',
-        't' => 'thumbnail',
-        'z' => 'medium',
-        'c' => 'large',
-        'b' => 'xlarge',
-        'h' => 'xxlarge',
-    ];
+    private $imageClient;
+
+    /**
+     * PhotoStrategy constructor.
+     * @param FlickrImageClient|null $imageClient
+     */
+    public function __construct(FlickrImageClient $imageClient = null)
+    {
+        $this->imageClient = $imageClient ?: new FlickrImageClient();
+    }
 
     /**
      * Converts the given value so that it can be extracted by the hydrator.
@@ -58,37 +58,12 @@ class PhotoStrategy implements StrategyInterface
     {
         foreach ($values as $imageData) {
             $image = new FlickrImage();
-            $url = $this->createImageUrl($imageData);
-            $image->setUrl($url);
             $image->setTitle($imageData['title']);
             $image->setId($imageData['id']);
-            foreach ($this->sizes as $flickrSize => $sizeName) {
-                $url = $this->createImageUrl($imageData, $flickrSize);
-                $method = 'set' . ucfirst($sizeName) . 'Url';
-                $image->$method($url, $sizeName);
-            }
+            $image = $this->imageClient->fillImagesWithSizes($image);
             $images[] = $image;
         }
         return $images ?? [];
-    }
-
-    /**
-     * @param array $values
-     */
-    private function createImageUrl(array $values, string $size = '')
-    {
-        $url = 'https://farm';
-        $url .= $values['farm'];
-        $url .= '.staticflickr.com/';
-        $url .= $values['server'] . '/';
-        $url .= $values['id'] . '_';
-        $url .= $values['secret'];
-        if ($size) {
-            $url .= '_' . $size;
-        }
-        $url .= '.jpg';
-
-        return $url;
     }
 
 }
