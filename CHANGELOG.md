@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 1.2.0
 ### Added
-- added a Field 
+- added a Field to use the galleries
+- cache will be flushed after saving the page
 
 ### Removed
 - removed the twig method

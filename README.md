@@ -46,9 +46,11 @@ The Use the Field like every generic Craft Field, add your Flickr Album id, and 
        <h2>{{ album.title }}</h2>
        <div class="galleries">
            {% for image in album.images %}
+              {% if not image.hasError %}
                <a href="{{ image.xxlargeUrl }}">
                    <img src="{{ image.smallUrl }}" alt="{{ image.title }}"/>
                </a>
+               {% endif %}
            {% endfor %}
        </div>
    {% endif %}
@@ -56,7 +58,7 @@ The Use the Field like every generic Craft Field, add your Flickr Album id, and 
 ```
 
 ### Edge Cases / Nice to know
-- The plugin internally uses Craft's cache to cache the requests, so its recommended to warm the cache after you changed images in the flickr gallery.
+- The plugin internally uses Craft's cache to cache the requests, so its recommended to warm the cache after you changed images in the flickr gallery. After Saving a Page with Images, the Cache will be flushed!
 - The plugin has no Pagination implementations for the Flickr Images, so its not Possible to load more than 500 images (Limit of one Request on Flickrs Site). If there are request about this, i maybe will implement this later
 - Image Sizes , there are even more Sizes than just `{{ image.url }}`, but not every flickr Image can serve every size. Atm there is no error handling implemented. The ["Flickr" Sizes](https://www.flickr.com/services/api/flickr.photos.getSizes.html)
    - squareUrl `{{ image.squareUrl }}`

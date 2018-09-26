@@ -125,6 +125,9 @@ class FlickrField extends Field
      */
     public function serializeValue($value, ElementInterface $element = null)
     {
+        if (array_key_exists('id', $value)) {
+            Craft::$app->cache->delete($value['id']);
+        }
 
         return $value;
     }
