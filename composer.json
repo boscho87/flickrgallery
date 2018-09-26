@@ -2,7 +2,7 @@
     "name": "itscoding/flickr-gallery",
     "description": "Use FlickrImages",
     "type": "craft-plugin",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "keywords": [
         "craft",
         "cms",
@@ -11,8 +11,8 @@
         "flickrgallery"
     ],
     "support": {
-        "docs": "https://github.com/boscho87/flickr-gallery/blob/master/README.md",
-        "issues": "https://github.com/boscho87/flickr-gallery/issues"
+        "docs": "https://github.com/boscho87/flickrgallery/blob/master/README.md",
+        "issues": "https://github.com/boscho87/flickrgallery/issues"
     },
     "license": "MIT",
     "authors": [
@@ -42,7 +42,7 @@
         "handle": "flickr-gallery",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/boscho87/flickr-gallery/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/boscho87/flickrgallery/master/CHANGELOG.md",
         "components": {
             "flickrGalleryService": "itscoding\\flickrgallery\\services\\FlickrGalleryService"
         },
