@@ -80,7 +80,7 @@ class FlickrClient
     public function get(string $method, array $queryParams): string
     {
         $url = $this->createRequestUrl($method, $queryParams);
-        $options = ['http' => ['ignore_errors' => true,]];
+        $options = ['http' => ['ignore_errors' => true,'timeout' => 1]];
         $context = stream_context_create($options);
         $data = file_get_contents($url, null, $context);
         return $data;

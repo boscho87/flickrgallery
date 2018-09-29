@@ -14,6 +14,8 @@ use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\helpers\Json;
 use h2g\ytilitu\assetbundles\field\FieldAsset;
+use itscoding\flickrgallery\entities\FlickrAlbum;
+use itscoding\flickrgallery\jobs\AlbumJob;
 use itscoding\flickrgallery\services\FlickrAlbumClient;
 use itscoding\flickrgallery\services\FlickrClient;
 use itscoding\flickrgallery\services\parser\AlbumParser;
@@ -27,12 +29,31 @@ use yii\db\Schema;
 class FlickrField extends Field
 {
 
+    const FLICKR_ID = 'id';
+
+    const LOAD_FROM_FRONTEND = 'load_fe';
+
+    /**
+     * @var FlickrAlbumClient
+     */
+    private $flickrAlbumClient;
+
     /**
      * @return string The display name of this class.
      */
     public static function displayName(): string
     {
         return Craft::t('flickr-gallery', 'youtube.link');
+    }
+
+
+    public function init()
+    {
+        parent::init();
+        $this->flickrAlbumClient = new FlickrAlbumClient(
+            new FlickrClient(),
+            new AlbumParser()
+        );
     }
 
     /**
@@ -67,14 +88,14 @@ class FlickrField extends Field
 
         return Craft::$app->getView()->renderTemplate('flickr-gallery/flickr_field', [
             'flickr_id' => [
-                'name' => $this->handle . '[id]',
+                'name' => $this->handle . '[' . self::FLICKR_ID . ']',
                 'id' => 'flickr_id',
-                'value' => $value['id'] ?? '',
+                'value' => $value[self::FLICKR_ID] ?? '',
             ],
-            'flickr_exception' => [
-                'name' => $this->handle . '[exception]',
-                'id' => 'flickr_exception',
-                'value' => $value['exception'] ?? '',
+            'load_fe' => [
+                'name' => $this->handle . '[' . self::LOAD_FROM_FRONTEND . ']',
+                'id' => 'load_fe',
+                'value' => $value[self::LOAD_FROM_FRONTEND] ?? '',
             ],
         ]);
     }
@@ -96,27 +117,28 @@ class FlickrField extends Field
             return $value;
         }
 
-        $flickrAlbumClient = new FlickrAlbumClient(
-            new FlickrClient(),
-            new AlbumParser()
-        );
-
         $options = JSON::decode($value);
         $id = $options['id'] ?: '-1';
         if (Craft::$app->cache->exists($id)) {
             return Craft::$app->cache->get($id);
         }
-        if (array_key_exists('exception', $options) && $options['exception']) {
-            $album = $flickrAlbumClient->getAlbumById($id);
-        } else {
-            $album = $flickrAlbumClient->getAlbumByIdOrEmpty($id);
+        //if loading from frontend is activated --> load the album from the frontend and store it to the cache
+        if (array_key_exists(self::LOAD_FROM_FRONTEND, $options ?? []) && $options[self::LOAD_FROM_FRONTEND]) {
+            $album = $this->flickrAlbumClient->getAlbumByIdOrEmpty($id);
+            if ($album->getImages()) {
+                Craft::$app->cache->set($id, $album);
+            }
+            return $album;
+
+        } elseif (isset($options[self::FLICKR_ID])) {
+            //if loading from frontend is inactive --> create a job and do it on the next login
+            Craft::$app->queue->push(new AlbumJob(['id' => $options[self::FLICKR_ID]]));
         }
-        if ($album->getImages()) {
-            Craft::$app->cache->set($id, $album);
-        }
+        $album = new FlickrAlbum();
+        $album->setError();
+
         return $album;
     }
-
 
     /**
      * @param $value
@@ -125,8 +147,17 @@ class FlickrField extends Field
      */
     public function serializeValue($value, ElementInterface $element = null)
     {
-        if (array_key_exists('id', $value)) {
-            Craft::$app->cache->delete($value['id']);
+        if (array_key_exists(self::FLICKR_ID, $value)) {
+            //simply check if the album is available
+            $answer = $this->flickrAlbumClient->getRawAlbumByPhotoSetId((int)$value['id']);
+            $answer = json_decode($answer, true);
+            if (array_key_exists('code', $answer) && $answer['code'] === AlbumParser::ERROR_CODE || !$answer) {
+                //if there was an error on request send a message to the user
+                Craft::$app->session->setError('Flickr Album not found for id:' . $value[self::FLICKR_ID]);
+            } else {
+                // create a job to fetch the album in the queue
+                Craft::$app->queue->push(new AlbumJob(['id' => $value[self::FLICKR_ID]]));
+            }
         }
 
         return $value;

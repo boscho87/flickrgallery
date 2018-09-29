@@ -10,10 +10,14 @@
 
 namespace itscoding\flickrgallery;
 
+use craft\events\RegisterCacheOptionsEvent;
+use craft\services\Dashboard;
 use craft\services\Fields;
+use craft\services\Utilities;
+use craft\utilities\ClearCaches;
 use itscoding\flickrgallery\fields\FlickrField;
+use itscoding\flickrgallery\jobs\AlbumJob;
 use itscoding\flickrgallery\services\FlickrAlbumClient;
-use itscoding\flickrgallery\twigextensions\FlickrGalleryTwigExtension;
 use itscoding\flickrgallery\models\Settings;
 
 use Craft;

@@ -19,5 +19,6 @@ return [
     'app.secret' => 'App Secret',
     'app.secret.instructions' => 'Enter your App Secret here',
     'api.id.instructions' => 'Enter the Flcikr Album ID here',
-    'api.error.label' => 'Site error when Failing',
+    'api.fetch.frontend' => 'Fetch the Images from Flickr when the user Access the Frontend',
+    'update.albums' => 'Fetch Flickr Albums',
 ];

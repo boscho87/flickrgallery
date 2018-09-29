@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3.0 - 2018-09-30
+### Added
+- Added a Job to Async fetch the images
+
 ## 1.2.4 - 2018-09-26
 ### Updated
 - Fixed Changelog

@@ -32,6 +32,7 @@ Get a Flickr [Api Key](https://www.flickr.com/services/api/misc.api_keys.html) a
 
 ## Using FlickrGallery
 
+
 The Plugins adds a Field you can use to craft
 
 ### Field:
@@ -68,6 +69,8 @@ The Use the Field like every generic Craft Field, add your Flickr Album id, and 
    - largeUrl
    - xlargeUrl
    - xxlargeUrl
+   
+The albums are loaded in the Crafts queue, if you want to enable loading from the Frontend, set the checkbox on the field!
   
 ## Roadmap
 
